@@ -52,7 +52,7 @@ public class CreateTriangleTests extends ServiceTests {
                 getUniversalUnsuccessfulSpec());
         SoftAssertions softly = new SoftAssertions();
         softly.assertThat(getValueByJsonPath(response, "error")).isNotEmpty();
-        softly.assertThat(getValueByJsonPath(response, "status")).isEqualTo(422);
+        softly.assertThat(getValueByJsonPath(response, "status")).isEqualTo("422");
         softly.assertAll();
     }
 
