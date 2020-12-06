@@ -21,20 +21,17 @@ public class DataSupplier {
         return "!";
     }
 
+    /*
+    Check all symbols from ASCII table except numbers
+     */
     private  static List<String> getSeparators() {
         symbols = new ArrayList<>();
         for (int i = 33; i < 48; i++) {
             symbols.add(Character.toString((char) i));
         }
-        for (int i = 58; i < 65; i++) {
+        for (int i = 58; i < 127; i++) {
             symbols.add(Character.toString((char) i));
-        }
-        for (int i = 93; i < 97; i++) {
-            symbols.add(Character.toString((char) i));
-        }
-        for (int i = 123; i < 127; i++) {
-            symbols.add(Character.toString((char) i));
-        }
+    }
         return symbols;
     }
 

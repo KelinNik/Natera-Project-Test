@@ -1,3 +1,5 @@
+import io.qameta.allure.Description;
+import io.qameta.allure.Epic;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
@@ -24,6 +26,8 @@ public class SmokeTests extends ServiceTests {
     private String second;
     private String third;
 
+
+    @Description(value = "Check the main function of creating triangle")
     @Test
     public void checkCreatingTriangle() {
         cleanAllSavedData(step.httpGet(ALL));
@@ -40,6 +44,7 @@ public class SmokeTests extends ServiceTests {
         softly.assertAll();
     }
 
+    @Description(value = "Check function - getById")
     @Test(dependsOnMethods = "checkCreatingTriangle")
     public void checkGetById() {
         Response response = step.httpGet(newAddedId);
@@ -51,6 +56,7 @@ public class SmokeTests extends ServiceTests {
         softly.assertAll();
     }
 
+    @Description(value = "Check function - delete")
     @Test(dependsOnMethods = "checkPerimeter", enabled = true)
     public void checkDelete() {
         step.httpDelete(newAddedId);
@@ -60,15 +66,17 @@ public class SmokeTests extends ServiceTests {
         softly.assertAll();
     }
 
-    @Test(dependsOnMethods = "checkDelete")
+    @Description(value = "Check getAll function")
+    @Test(dependsOnMethods = "checkGetById")
     public void checkGetAll() {
         Response response = step.httpGet(ALL);
         SoftAssertions softly = new SoftAssertions();
         List<String> allId = getAllId(response);
-        softly.assertThat(allId.size()).isEqualTo(0);
+        softly.assertThat(allId.size()).isEqualTo(1);
         softly.assertAll();
     }
 
+    @Description(value = "Check getPerimeter function")
     @Test(dependsOnMethods = "checkGetById")
     public void checkPerimeter() {
         Response response = step.httpGet(newAddedId + PERIMETER);
@@ -77,6 +85,7 @@ public class SmokeTests extends ServiceTests {
         softly.assertAll();
     }
 
+    @Description(value = "Check getArea function")
     @Test(dependsOnMethods = "checkGetById")
     public void checkArea() {
         Response response = step.httpGet(newAddedId + AREA);

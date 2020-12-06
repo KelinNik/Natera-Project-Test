@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
@@ -22,6 +23,7 @@ public class GetByIdTests extends ServiceTests {
     private String second;
     private String third;
 
+    @Description(value = "Check the main function of creating triangle")
     @Test
     public void checkCreatingTriangle() {
         cleanAllSavedData(step.httpGet(ALL));
@@ -38,6 +40,7 @@ public class GetByIdTests extends ServiceTests {
         softly.assertAll();
     }
 
+    @Description(value = "Check getting triangle with wrong ID")
     @Test(dependsOnMethods = "checkCreatingTriangle")
     public void checkGetByIdWithWrongId() {
         Response response = step.httpGet(newAddedId+"123", getUniversalUnsuccessfulSpec());

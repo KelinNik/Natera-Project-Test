@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
@@ -21,6 +22,7 @@ public class DeleteServiceTests extends ServiceTests {
     private String second;
     private String third;
 
+    @Description(value = "Check creating triangle 10 times")
     @Test
     public void checkCreatingTriangle10Times() {
         cleanAllSavedData(step.httpGet(ALL));
@@ -39,6 +41,7 @@ public class DeleteServiceTests extends ServiceTests {
         }
     }
 
+    @Description(value = "Check delete 10 times")
     @Test(dependsOnMethods = "checkCreatingTriangle10Times", enabled = true)
     public void checkDelete10Times() {
         List<String> allId = getAllId(step.httpGet(ALL));

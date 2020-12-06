@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import io.restassured.response.Response;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
@@ -24,6 +25,8 @@ public class CreateTriangleTests extends ServiceTests {
     private String second;
     private String third;
 
+
+    @Description(value = "Check creating triangle without optional separator")
     @Test
     public void checkCreatingTriangleWithoutSeparator() {
         cleanAllSavedData(step.httpGet(ALL));
@@ -40,6 +43,7 @@ public class CreateTriangleTests extends ServiceTests {
         softly.assertAll();
     }
 
+    @Description(value = "Check case when separator is different from other in input")
     @Test
     public void checkCreatingTriangleWithSeparatorDifferentFromAnotherInInput() {
         cleanAllSavedData(step.httpGet(ALL));
@@ -56,6 +60,7 @@ public class CreateTriangleTests extends ServiceTests {
         softly.assertAll();
     }
 
+    @Description(value = "Check createTriangle without \"input\"")
     @Test
     public void checkCreatingTriangleWithoutInput() {
         cleanAllSavedData(step.httpGet(ALL));
@@ -63,6 +68,7 @@ public class CreateTriangleTests extends ServiceTests {
                 getUniversalUnsuccessfulSpec());
     }
 
+    @Description(value = "Check check some possible separators")
     @Test
     public void checkVariousOfSeparators(){
         Map<String, String> sideSizeWithSeparator = getSideSizeWithSeparator("4", "5", "7");
@@ -81,6 +87,7 @@ public class CreateTriangleTests extends ServiceTests {
         softly.assertAll();
     }
 
+    @Description(value = "Check negative numbers in input field")
     @Test
     public void checkNegativeNumbersInInputField(){
         SoftAssertions softly = new SoftAssertions();

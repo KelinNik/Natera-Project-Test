@@ -9,11 +9,8 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <properties>
-        <allure.results.directory>${project.basedir}/target/allure-results</allure.results.directory>
-        <allure.report.directory>${project.basedir}/target/allure-report</allure.report.directory>
-        <allure.version>{latest-allure-version}</allure.version>
-        <allure.download.url>https://github.com/allure-framework/allure2/releases/download/2.7.0/allure-2.7.0.zip
-        </allure.download.url>
+        <allure.results.directory>${project.basedir}\target\allure-results</allure.results.directory>
+        <allure.report.directory>${project.basedir}\target\allure-report</allure.report.directory>
         <aspectj.version>1.9.1</aspectj.version>
     </properties>
     <dependencies>
@@ -100,7 +97,7 @@
                         </property>
                     </systemProperties>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                        -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
                     </argLine>
                     <suiteXmlFiles>
                         <suiteXmlFile>testng.xml</suiteXmlFile>
@@ -119,8 +116,7 @@
                 <artifactId>allure-maven</artifactId>
                 <version>2.9</version>
                 <configuration>
-                    <allureDownloadUrl>${allure.download.url}</allureDownloadUrl>
-                    <reportVersion>${allure.version}</reportVersion>
+                    <reportVersion>2.6.0</reportVersion>
                     <resultsDirectory>${allure.results.directory}</resultsDirectory>
                     <reportDirectory>${allure.report.directory}</reportDirectory>
                 </configuration>
