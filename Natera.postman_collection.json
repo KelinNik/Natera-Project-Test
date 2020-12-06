@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "d4692e20-35b8-4805-895c-1182f5e7feba",
+		"name": "Natera",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "CREATE_TRIANGLE",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "X-User",
+						"value": "a411be34-4b03-45a3-96d3-4bf1521b9e1f",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"separator\": \"/\",\n    \"input\": \"7/7/4\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://qa-quiz.natera.com/triangle",
+					"protocol": "https",
+					"host": [
+						"qa-quiz",
+						"natera",
+						"com"
+					],
+					"path": [
+						"triangle"
+					],
+					"query": [
+						{
+							"key": "X-User",
+							"value": "a411be34-4b03-45a3-96d3-4bf1521b9e1f",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_BY_ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-User",
+						"value": "a411be34-4b03-45a3-96d3-4bf1521b9e1f",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://qa-quiz.natera.com/triangle/fd3ffc64-2471-4193-9098-7568ab2743aa",
+					"protocol": "https",
+					"host": [
+						"qa-quiz",
+						"natera",
+						"com"
+					],
+					"path": [
+						"triangle",
+						"fd3ffc64-2471-4193-9098-7568ab2743aa"
+					],
+					"query": [
+						{
+							"key": "X-User",
+							"value": "3bda64c9-6439-4ad3-829c-a6fd7b9e55fe",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE_BY_ID",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "X-User",
+						"type": "text",
+						"value": "a411be34-4b03-45a3-96d3-4bf1521b9e1f"
+					}
+				],
+				"url": {
+					"raw": "https://qa-quiz.natera.com/triangle/1190289c-5d2e-4848-a5fa-98feb18b8310",
+					"protocol": "https",
+					"host": [
+						"qa-quiz",
+						"natera",
+						"com"
+					],
+					"path": [
+						"triangle",
+						"1190289c-5d2e-4848-a5fa-98feb18b8310"
+					],
+					"query": [
+						{
+							"key": "X-User",
+							"value": "3bda64c9-6439-4ad3-829c-a6fd7b9e55fe",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_ALL",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-User",
+						"type": "text",
+						"value": "a411be34-4b03-45a3-96d3-4bf1521b9e1f"
+					}
+				],
+				"url": {
+					"raw": "https://qa-quiz.natera.com/triangle/all",
+					"protocol": "https",
+					"host": [
+						"qa-quiz",
+						"natera",
+						"com"
+					],
+					"path": [
+						"triangle",
+						"all"
+					],
+					"query": [
+						{
+							"key": "X-User",
+							"value": "3bda64c9-6439-4ad3-829c-a6fd7b9e55fe",
+							"disabled": true
+						},
+						{
+							"key": "triangleId",
+							"value": "8e01bc43-d642-4ff9-b1a7-b258233b1c8d",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_PERIMETER",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-User",
+						"type": "text",
+						"value": "a411be34-4b03-45a3-96d3-4bf1521b9e1f"
+					}
+				],
+				"url": {
+					"raw": "https://qa-quiz.natera.com/triangle/fd3ffc64-2471-4193-9098-7568ab2743aa/perimeter",
+					"protocol": "https",
+					"host": [
+						"qa-quiz",
+						"natera",
+						"com"
+					],
+					"path": [
+						"triangle",
+						"fd3ffc64-2471-4193-9098-7568ab2743aa",
+						"perimeter"
+					],
+					"query": [
+						{
+							"key": "X-User",
+							"value": "3bda64c9-6439-4ad3-829c-a6fd7b9e55fe",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_AREA",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "X-User",
+						"type": "text",
+						"value": "a411be34-4b03-45a3-96d3-4bf1521b9e1f"
+					}
+				],
+				"url": {
+					"raw": "https://qa-quiz.natera.com/triangle/fd3ffc64-2471-4193-9098-7568ab2743aa/area",
+					"protocol": "https",
+					"host": [
+						"qa-quiz",
+						"natera",
+						"com"
+					],
+					"path": [
+						"triangle",
+						"fd3ffc64-2471-4193-9098-7568ab2743aa",
+						"area"
+					],
+					"query": [
+						{
+							"key": "X-User",
+							"value": "3bda64c9-6439-4ad3-829c-a6fd7b9e55fe",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
