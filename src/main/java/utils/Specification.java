@@ -18,7 +18,7 @@ public class Specification {
 
     public static ResponseSpecification getUniversalUnsuccessfulSpec() {
         return new ResponseSpecBuilder()
-                .expectBody(ERROR, notNullValue())
+                .expectBody("error", notNullValue())
                 .build();
     }
 }
