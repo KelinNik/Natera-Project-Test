@@ -6,6 +6,14 @@ import java.util.List;
 
 public abstract class ServiceTests {
 
+    public static final String FIRST = "firstSide";
+    public static final String SECOND = "secondSide";
+    public static final String THIRD = "thirdSide";
+    public static final String ID = "id";
+    public static final String ERROR = "error";
+    public static final String RESULT = "result";
+    public static final String NOT_FOUND = "Not Found";
+
     static {
         RestAssured.useRelaxedHTTPSValidation();
     }
@@ -26,7 +34,7 @@ public abstract class ServiceTests {
     }
 
     protected List<String> getAllId(Response response) {
-        return getValuesByJsonPath(response, "id");
+        return getValuesByJsonPath(response, ID);
     }
 
     protected String calcPerimeter(String first, String second, String third) {
@@ -40,7 +48,7 @@ public abstract class ServiceTests {
         double a = new Double(first);
         double b = new Double(second);
         double c = new Double(third);
-        double halfPer = (a+b+c)/2;
-        return String.valueOf(Math.sqrt(halfPer*(halfPer-a)*(halfPer-b)*(halfPer-c)));
+        double halfPer = (a + b + c) / 2;
+        return String.valueOf(Math.sqrt(halfPer * (halfPer - a) * (halfPer - b) * (halfPer - c)));
     }
 }

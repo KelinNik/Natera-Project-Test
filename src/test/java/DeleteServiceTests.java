@@ -13,14 +13,9 @@ public class DeleteServiceTests extends ServiceTests {
 
     private static final String BASE_URL = "https://qa-quiz.natera.com/triangle/";
     private static final String ALL = "/all";
+    private Steps step = new Steps(BASE_URL);
 
     Triangle triangle = new Triangle();
-
-    private Steps step = new Steps(BASE_URL);
-    private String newAddedId;
-    private String first;
-    private String second;
-    private String third;
 
     @Description(value = "Check creating triangle 10 times")
     @Test
@@ -31,10 +26,10 @@ public class DeleteServiceTests extends ServiceTests {
                     triangle.getDefaultTriangle().getJsonBody(),
                     getUniversalSuccessfulSpec());
             SoftAssertions softly = new SoftAssertions();
-            newAddedId = getValueByJsonPath(response, "id");
-            first = getValueByJsonPath(response, "firstSide");
-            second = getValueByJsonPath(response, "secondSide");
-            third = getValueByJsonPath(response, "thirdSide");
+            String newAddedId = getValueByJsonPath(response, ID);
+            String first = getValueByJsonPath(response, FIRST);
+            String second = getValueByJsonPath(response, SECOND);
+            String third = getValueByJsonPath(response, THIRD);
             softly.assertThat(newAddedId).isNotBlank().isNotEmpty().isNotNull();
             softly.assertThat(isTriangle(first, second, third)).isTrue();
             softly.assertAll();

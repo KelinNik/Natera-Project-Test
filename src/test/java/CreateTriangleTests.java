@@ -34,10 +34,10 @@ public class CreateTriangleTests extends ServiceTests {
                 triangle.getTriangleWithoutSeparator().getJsonBody(),
                 getUniversalSuccessfulSpec());
         SoftAssertions softly = new SoftAssertions();
-        newAddedId = getValueByJsonPath(response, "id");
-        first = getValueByJsonPath(response, "firstSide");
-        second = getValueByJsonPath(response, "secondSide");
-        third = getValueByJsonPath(response, "thirdSide");
+        newAddedId = getValueByJsonPath(response, ID);
+        first = getValueByJsonPath(response, FIRST);
+        second = getValueByJsonPath(response, SECOND);
+        third = getValueByJsonPath(response, THIRD);
         softly.assertThat(newAddedId).isNotBlank().isNotEmpty().isNotNull();
         softly.assertThat(isTriangle(first, second, third)).isTrue();
         softly.assertAll();
@@ -51,7 +51,7 @@ public class CreateTriangleTests extends ServiceTests {
                 triangle.getTriangleWithUnusualSeparator().getJsonBody(),
                 getUniversalUnsuccessfulSpec());
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(getValueByJsonPath(response, "error")).isNotEmpty();
+        softly.assertThat(getValueByJsonPath(response, ERROR)).isNotEmpty();
         softly.assertThat(getValueByJsonPath(response, "status")).isEqualTo("422");
         softly.assertAll();
     }
@@ -73,10 +73,10 @@ public class CreateTriangleTests extends ServiceTests {
             cleanAllSavedData(step.httpGet(ALL));
             Response response = step.httpPost("", triangle.getDiffTriangle(separator, sideSizeWithSeparator.get(separator)).getJsonBody(),
                     getUniversalSuccessfulSpec());
-            newAddedId = getValueByJsonPath(response, "id");
-            first = getValueByJsonPath(response, "firstSide");
-            second = getValueByJsonPath(response, "secondSide");
-            third = getValueByJsonPath(response, "thirdSide");
+            newAddedId = getValueByJsonPath(response, ID);
+            first = getValueByJsonPath(response, FIRST);
+            second = getValueByJsonPath(response, SECOND);
+            third = getValueByJsonPath(response, THIRD);
             softly.assertThat(newAddedId).isNotBlank().isNotEmpty().isNotNull();
             softly.assertThat(isTriangle(first, second, third)).isTrue();
         }
@@ -89,7 +89,7 @@ public class CreateTriangleTests extends ServiceTests {
         SoftAssertions softly = new SoftAssertions();
         Response response = step.httpPost("", triangle.getNegativeTriangle().getJsonBody(),
                 getUniversalUnsuccessfulSpec());
-        softly.assertThat(getValueByJsonPath(response, "error")).isNotEmpty();
+        softly.assertThat(getValueByJsonPath(response, ERROR)).isNotEmpty();
         softly.assertAll();
     }
 

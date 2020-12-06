@@ -35,10 +35,10 @@ public class SmokeTests extends ServiceTests {
                 triangle.getDefaultTriangle().getJsonBody(),
                 getUniversalSuccessfulSpec());
         SoftAssertions softly = new SoftAssertions();
-        newAddedId = getValueByJsonPath(response, "id");
-        first = getValueByJsonPath(response, "firstSide");
-        second = getValueByJsonPath(response, "secondSide");
-        third = getValueByJsonPath(response, "thirdSide");
+        newAddedId = getValueByJsonPath(response, ID);
+        first = getValueByJsonPath(response, FIRST);
+        second = getValueByJsonPath(response, SECOND);
+        third = getValueByJsonPath(response, THIRD);
         softly.assertThat(newAddedId).isNotBlank().isNotEmpty().isNotNull();
         softly.assertThat(isTriangle(first, second, third)).isTrue();
         softly.assertAll();
@@ -49,10 +49,10 @@ public class SmokeTests extends ServiceTests {
     public void checkGetById() {
         Response response = step.httpGet(newAddedId);
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(newAddedId).isEqualTo(getValueByJsonPath(response, "id"));
-        softly.assertThat(first).isEqualTo(getValueByJsonPath(response, "firstSide"));
-        softly.assertThat(second).isEqualTo(getValueByJsonPath(response, "secondSide"));
-        softly.assertThat(third).isEqualTo(getValueByJsonPath(response, "thirdSide"));
+        softly.assertThat(newAddedId).isEqualTo(getValueByJsonPath(response, ID));
+        softly.assertThat(first).isEqualTo(getValueByJsonPath(response, FIRST));
+        softly.assertThat(second).isEqualTo(getValueByJsonPath(response, SECOND));
+        softly.assertThat(third).isEqualTo(getValueByJsonPath(response, THIRD));
         softly.assertAll();
     }
 
@@ -62,7 +62,7 @@ public class SmokeTests extends ServiceTests {
         step.httpDelete(newAddedId);
         SoftAssertions softly = new SoftAssertions();
         Response response = step.httpGet(newAddedId);
-        softly.assertThat(getValueByJsonPath(response, "error")).isEqualTo("Not Found");
+        softly.assertThat(getValueByJsonPath(response, ERROR)).isEqualTo(NOT_FOUND);
         softly.assertAll();
     }
 
@@ -81,7 +81,7 @@ public class SmokeTests extends ServiceTests {
     public void checkPerimeter() {
         Response response = step.httpGet(newAddedId + PERIMETER);
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(getValueByJsonPath(response, "result")).isEqualTo(calcPerimeter(first, second, third));
+        softly.assertThat(getValueByJsonPath(response, RESULT)).isEqualTo(calcPerimeter(first, second, third));
         softly.assertAll();
     }
 
@@ -90,7 +90,7 @@ public class SmokeTests extends ServiceTests {
     public void checkArea() {
         Response response = step.httpGet(newAddedId + AREA);
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(calcArea(first, second, third)).containsSequence(getValueByJsonPath(response, "result"));
+        softly.assertThat(calcArea(first, second, third)).containsSequence(getValueByJsonPath(response, RESULT));
         softly.assertAll();
     }
 

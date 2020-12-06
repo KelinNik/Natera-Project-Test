@@ -14,14 +14,10 @@ public class GetByIdTests extends ServiceTests {
 
     private static final String BASE_URL = "https://qa-quiz.natera.com/triangle/";
     private static final String ALL = "/all";
+    private String newAddedId;
 
     Triangle triangle = new Triangle();
-
     private Steps step = new Steps(BASE_URL);
-    private String newAddedId;
-    private String first;
-    private String second;
-    private String third;
 
     @Description(value = "Check the main function of creating triangle")
     @Test
@@ -31,10 +27,10 @@ public class GetByIdTests extends ServiceTests {
                 triangle.getDefaultTriangle().getJsonBody(),
                 getUniversalSuccessfulSpec());
         SoftAssertions softly = new SoftAssertions();
-        newAddedId = getValueByJsonPath(response, "id");
-        first = getValueByJsonPath(response, "firstSide");
-        second = getValueByJsonPath(response, "secondSide");
-        third = getValueByJsonPath(response, "thirdSide");
+        newAddedId = getValueByJsonPath(response, ID);
+        String first = getValueByJsonPath(response, FIRST);
+        String second = getValueByJsonPath(response, SECOND);
+        String third = getValueByJsonPath(response, THIRD);
         softly.assertThat(newAddedId).isNotBlank().isNotEmpty().isNotNull();
         softly.assertThat(isTriangle(first, second, third)).isTrue();
         softly.assertAll();
@@ -45,8 +41,8 @@ public class GetByIdTests extends ServiceTests {
     public void checkGetByIdWithWrongId() {
         Response response = step.httpGet(newAddedId+"123", getUniversalUnsuccessfulSpec());
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(getValueByJsonPath(response, "error")).isEqualTo("Not Found");
-        softly.assertThat(getValueByJsonPath(response, "message")).isEqualTo("Not Found");
+        softly.assertThat(getValueByJsonPath(response, ERROR)).isEqualTo(NOT_FOUND);
+        softly.assertThat(getValueByJsonPath(response, "message")).isEqualTo(NOT_FOUND);
         softly.assertAll();
     }
 
